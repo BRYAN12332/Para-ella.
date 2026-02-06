@@ -1,1 +1,137 @@
 # Para-ella.
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0c0c2b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Estrellas simples */
+        .estrella {
+            position: absolute;
+            background: white;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        /* Corazones */
+        .corazon {
+            position: absolute;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            background-color: #ff416c;
+            opacity: 0.8;
+        }
+
+        /* Mensaje principal */
+        .mensaje {
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px #ff416c;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        /* Botón de música */
+        button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #ff416c;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="mensaje">
+        <h1>Te Amo</h1>
+        <p>Eres mi novia, mi niña, lo más importante para mí.</p>
+        <p>Este pequeño universo es para ti.</p>
+        <button id="btnAudio">Reproducir Música</button>
+    </div>
+
+    <audio id="audio" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/26/audio_82c5922156.mp3?filename=soft-piano-100-bpm-121529.mp3" type="audio/mpeg">
+    
+
+    <script>
+        // Crear estrellas y corazones sencillos
+        function crearElementos() {
+            const cantidadEstrellas = 150;
+            const cantidadCorazones = 30;
+            const body = document.body;
+
+            // Estrellas
+            for(let i=0; i<cantidadEstrellas; i++){
+                const estrella = document.createElement('div');
+                estrella.classList.add('estrella');
+                estrella.style.left = Math.random()*100 + '%';
+                estrella.style.top = Math.random()*100 + '%';
+                body.appendChild(estrella);
+            }
+
+            // Corazones
+            for(let i=0; i<cantidadCorazones; i++){
+                const corazon = document.createElement('div');
+                corazon.classList.add('corazon');
+                corazon.style.left = Math.random()*100 + '%';
+                corazon.style.top = Math.random()*100 + '%';
+                corazon.style.width = (Math.random()*15 + 5) + 'px';
+                corazon.style.height = (Math.random()*15 + 5) + 'px';
+                body.appendChild(corazon);
+            }
+        }
+
+        // Control de audio
+        const btn = document.getElementById('btnAudio');
+        const audio = document.getElementById('audio');
+
+        btn.addEventListener('click', () => {
+            if(audio.paused){
+                audio.play();
+                btn.textContent = 'Pausar Música';
+            } else {
+                audio.pause();
+                btn.textContent = 'Reproducir Música';
+            }
+        });
+
+        // Iniciar
+        crearElementos();
+    </script>
+     
+      
+</body>
+      
+</html
